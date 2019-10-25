@@ -38,19 +38,19 @@ router.post("/", async (req, res) => {
 
 // update a sensor
 router.patch("/:id", getSensor, async (req, res) => {
-    if(req.body.name !== null) {
+    if(req.body.name !== undefined) {
         res.sensor.name = req.body.name;
     }
-    if(req.body.description !== null) {
+    if(req.body.description !== undefined) {
         res.sensor.description = req.body.description;
     }
-    if(req.body.latitude !== null) {
+    if(req.body.latitude !== undefined) {
         res.sensor.latitude = req.body.latitude;
     }
-    if(req.body.longitude !== null) {
+    if(req.body.longitude !== undefined) {
         res.sensor.longitude = req.body.longitude;    
     }
-    if(req.body.type !== null) {
+    if(req.body.type !== undefined) {
         res.sensor.type = req.body.type;
     }
     try {

@@ -2,7 +2,7 @@ GET http://localhost:3000/sensors
 
 ###
 
-GET http://localhost:3000/sensors/5db2e4ac17ce6a3fc462fc7c
+GET http://localhost:3000/sensors/5db304c8fba5180480990192
 
 ###
 
@@ -23,7 +23,7 @@ DELETE http://localhost:3000/sensors/5db2e4ac17ce6a3fc462fc7c
 
 ###
 
-PATCH http://localhost:3000/sensors/5db2e4ac17ce6a3fc462fc7c
+PATCH http://localhost:3000/sensors/5db304c8fba5180480990192
 Content-Type: application/json
 
 {
