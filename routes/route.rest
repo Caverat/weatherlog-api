@@ -1,0 +1,31 @@
+GET http://localhost:3000/sensors
+
+###
+
+GET http://localhost:3000/sensors/5db2e4ac17ce6a3fc462fc7c
+
+###
+
+POST http://localhost:3000/sensors
+Content-Type: application/json
+
+{
+    "name": "Sensor name",
+    "description": "Description of sensor",
+    "latitude": 12.2345,
+    "longitude": 8.4234,
+    "type": "WaterTemperature"
+}
+
+###
+
+DELETE http://localhost:3000/sensors/5db2e4ac17ce6a3fc462fc7c
+
+###
+
+PATCH http://localhost:3000/sensors/5db2e4ac17ce6a3fc462fc7c
+Content-Type: application/json
+
+{
+    "type": "AirTemperature"
+}

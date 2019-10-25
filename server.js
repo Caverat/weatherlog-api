@@ -12,6 +12,6 @@ db.once("open", () => console.log("connected to database"));
 app.use(express.json());
 
 const sensorsRouter = require("./routes/sensors");
-app.use("./sensors", sensorsRouter);
+app.use("/sensors", sensorsRouter);
 
-app.listen(3000, () => console.log('server started'));
+app.listen(3000, () => console.log('server started, listening on port 3000'));
