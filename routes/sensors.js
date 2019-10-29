@@ -5,7 +5,7 @@ const Sensor = require("../models/sensor");
 // get all sensors
 router.get("/", async (req, res) => {  
     try{
-        const sensors = await Sensor.find();
+        const sensors = await Sensor.find().select('-entries');
         res.json(sensors);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -13,8 +13,8 @@ router.get("/", async (req, res) => {
 });
 
 // get one sensor
-router.get("/:id", getSensor, (req, res) => {
-    res.json(res.sensor);
+router.get("/:id", getSensorWithEntries, (req, res) => {
+    res.json(res.sensor.populate("entries"));
 });
 
 // create a sensor
@@ -70,6 +70,20 @@ router.delete("/:id", getSensor, async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
+async function getSensorWithEntries(req, res, next) {
+    try {
+        sensor = await Sensor.findById(req.params.id).populate("entries");
+        if (sensor === null) {
+            return res.status(404).json({ message: `Can't find sensor with id ${req.params.id}`});
+        }
+    } catch(err) {
+        return res.status(500).json({ message: err.message });
+    }
+
+    res.sensor = sensor;
+    next();
+};
 
 async function getSensor(req, res, next) {
     try {
